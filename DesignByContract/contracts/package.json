@@ -1,0 +1,14 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "contracts.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Ajinkya Lakade",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^9.2.2"
+  }
+}

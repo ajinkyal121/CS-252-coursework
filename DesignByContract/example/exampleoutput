@@ -1,0 +1,14 @@
+First test
+7
+
+Second test
+Contract violation in position 1. Expected number but received four.  Blame -> Top-level code
+
+Third test
+Contract violation. Expected number but returned undefined. Blame -> brokenMult
+
+Fourth test
+Contract violation in position 1. Expected number but received four.  Blame -> Top-level code
+
+Fifth test
+Contract violation in position 1. Expected number but received five.  Blame -> Top-level code

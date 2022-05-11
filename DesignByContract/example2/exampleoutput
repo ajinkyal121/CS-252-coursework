@@ -1,0 +1,10 @@
+Trying to deposit a negative amount
+Contract violation in position 0. Expected positive number and isInteger but received -42.  Blame -> Top-level code
+
+Trying to withdraw a negative amount
+Contract violation in position 0. Expected positive number and number and lessThanBalance but received -42.  Blame -> Top-level code
+
+242
+32
+Contract violation in position 0. Expected positive number and number and lessThanBalance but received 100.  Blame -> Top-level code
+Final balance: 32
