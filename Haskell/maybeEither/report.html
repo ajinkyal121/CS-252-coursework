@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="Submission" content="8MKOJ5BS8OV7CO3U60C9U533Q"/>
+<meta name="Time" content="2022-02-21T19:41:25Z"/>
+<meta name="ID" content="maybeEither"/>
+<meta name="User" content="udav-utiq-ejib-gipe"/>
+<meta name="Problem" content="ext/18021407065bctc7epgcvu9kzz561r43d7w"/>
+<meta name="Elapsed" content="3061 ms"/>
+<style type="text/css">
+.header {font-weight: bold; font-size: 1.2em; }
+.item {font-weight: bold;}
+.pass {color: green;}
+.fail {color: red;}
+.note {color: blue; font-weight: bold;}
+table.file td {padding-right: 1em; background: #FFF; }
+.linenumber {color: gray;}
+.footnote {font-size: 0.7em;}
+table {font-size: 0.9em;}
+td, th { background: #EEE; margin: 0.5em; padding: 0.25em;}
+table.output td {vertical-align: top;}
+div.footnotes { border-top: 1px solid gray; padding-top: 0.5em; }
+</style>
+<title>Report</title>
+</head>
+<body>
+<p class="header run">Testing maybeEither.hs</p>
+<div class="run">
+<pre class="output">Nothing
+Just 99
+Just (-12)
+Just 0.25
+Just 0.5
+Nothing
+Right 50
+Left "Width is not positive"
+Left "Height is not positive"
+</pre>
+<span class="pass">pass </span></div>
+<p class="header studentFiles">Submitted files</p>
+<div class="studentFiles">
+<p class="caption">maybeEither.hs:</p>
+<pre class="output">getMax :: [Int] -&gt; Maybe Int
+getMax [] = Nothing
+getMax (x:xs) 
+   | Just x &gt; (getMax xs)     = Just x
+   | otherwise                  = getMax xs
+   
+
+
+
+reciprocal :: (Eq a, Fractional a) =&gt; a -&gt; Maybe a
+reciprocal 0 = Nothing
+reciprocal x = Just (1 / x)
+
+
+
+rectangleArea :: Int -&gt; Int -&gt; Either String Int
+rectangleArea x y 
+   | x &lt; 0                 = Left "Width is not positive" 
+   | y &lt; 0                 = Left "Height is not positive" 
+   | otherwise             = Right (x * y)
+
+
+
+main :: IO ()
+main = do
+  print $ getMax []
+  print $ getMax [99,12,37]
+  print $ getMax [-99,-12,-37]
+  print $ reciprocal 4
+  print $ reciprocal 2
+  print $ reciprocal 0
+  print $ rectangleArea 5 10
+  print $ rectangleArea (-5) 10
+  print $ rectangleArea 5 (-10)
+</pre>
+</div>
+<p class="header score">Score</p>
+<div class="score">
+<p class="score">1/1</p>
+</div>
+<div class="footnotes"><div class="footnote">2022-02-21T19:41:25Z</div>
+</div>
+</body></html>

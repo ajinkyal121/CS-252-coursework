@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: 11.0.11 (Oracle Corporation)
+
+Name: maybeEither.hs
+SHA-256-Digest: zQO9Z7ArnalqCeKwF2iVAUITYsI2v7wBgDI6CCjQ6Bk=
+
+Name: report.html
+SHA-256-Digest: Vg3Meh99Yno2fSslguzXDDcsTtiJGdRiONUCDDmyYd0=
+
