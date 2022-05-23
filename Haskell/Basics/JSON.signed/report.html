@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="Submission" content="CLBE9GJ5C4A5S71WDVLFTGLRY"/>
+<meta name="Time" content="2022-02-01T20:05:15Z"/>
+<meta name="ID" content="JSON"/>
+<meta name="User" content="udav-utiq-ejib-gipe"/>
+<meta name="Problem" content="ext/1801270120a4iwu1xmznyiyliwjqj9akxcl"/>
+<meta name="Elapsed" content="3315 ms"/>
+<style type="text/css">
+.header {font-weight: bold; font-size: 1.2em; }
+.item {font-weight: bold;}
+.pass {color: green;}
+.fail {color: red;}
+.note {color: blue; font-weight: bold;}
+table.file td {padding-right: 1em; background: #FFF; }
+.linenumber {color: gray;}
+.footnote {font-size: 0.7em;}
+table {font-size: 0.9em;}
+td, th { background: #EEE; margin: 0.5em; padding: 0.25em;}
+table.output td {vertical-align: top;}
+div.footnotes { border-top: 1px solid gray; padding-top: 0.5em; }
+</style>
+<title>Report</title>
+</head>
+<body>
+<p class="header run">Testing jsonDriver.hs</p>
+<div class="run">
+<pre class="output">[{a:3.0,b:4.0,c:5.0},
+ {a:4.0,b:3.0,c:5.0},
+ {a:6.0,b:8.0,c:10.0},
+ {a:8.0,b:6.0,c:10.0}]
+{name:{first:"Tyrion",last:"Lannister"},age:32.0,siblings:["Jamie",
+ "Cersei"],pet:null}
+</pre>
+<span class="pass">pass </span></div>
+<p class="header studentFiles">Submitted files</p>
+<div class="studentFiles">
+<p class="caption">JSON.hs:</p>
+<pre class="output">---SOLUTION
+-- A JSON library written in Haskell, adapted from an example
+-- from "Real World Haskell".
+
+-- Note that the module name must match the name of the file.
+module JSON (
+  JValue(..), --The (..) means that we are exporting the type and all of its constructors
+  toString,
+  isNull,
+  jsonRightTriangles)
+where
+
+data JValue = JString String
+            | JNumber Double
+            | JBool Bool
+            | JNull
+            | JObject [(String, JValue)]
+            | JArray [JValue]
+  deriving (Eq, Ord, Show)
+
+
+--The type annotation indicates that the function takes a JValue and returns a String
+toString :: JValue      -&gt; String
+toString (JString s)    = "\"" ++ s ++ "\""
+toString (JNumber n)    = show n
+toString (JBool True)   = "true"
+toString (JBool False)  = "false"
+toString JNull          = "null"
+toString (JArray lst)   = "[" ++ list2str lst ++ "]"
+toString (JObject o) = "{" ++ object2str o ++ "}"
+
+
+
+list2str :: [JValue] -&gt; String
+list2str [] = ""
+list2str (x:[]) = (toString x)
+list2str (x:xs) = (toString x) ++ ",\n " ++ (list2str xs)
+
+object2str :: [(String, JValue)] -&gt; String
+object2str [] = ""
+object2str (x:[]) = (getobj x)
+object2str (x:xs) = getobj x ++ "," ++ object2str xs
+
+getobj :: (String, JValue) -&gt; String
+getobj (k, v) = k ++ ":" ++ toString v
+
+
+isNull JNull  = True
+isNull _      = False
+
+jsonRightTriangles = JArray [ JObject [("a",JNumber a), ("b",JNumber b), ("c",JNumber c)] |
+  a&lt;-[1..10],
+  b&lt;-[1..10],
+  c&lt;-[1..10],
+  a^2 + b^2 == c^2]
+</pre>
+</div>
+<p class="header providedFiles">Provided files</p>
+<div class="providedFiles">
+<p class="caption">jsonDriver.hs:</p>
+<pre class="output">import JSON
+
+testNested = JObject [
+  ("name", JObject [("first",JString "Tyrion"), ("last",JString "Lannister")]),
+  ("age", JNumber 32),
+  ("siblings", JArray [
+    JString "Jamie",
+    JString "Cersei"]),
+  ("pet", JNull)]
+
+main :: IO ()
+main = let arr = JSON.jsonRightTriangles
+  in do
+    putStrLn $ JSON.toString arr
+    putStrLn $ JSON.toString testNested
+
+</pre>
+</div>
+<p class="header score">Score</p>
+<div class="score">
+<p class="score">1/1</p>
+</div>
+<div class="footnotes"><div class="footnote">2022-02-01T20:05:15Z</div>
+</div>
+</body></html>

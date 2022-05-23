@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+<meta name="Submission" content="1K1PP01B2OXDO7GH4GUDMU84J"/>
+<meta name="Time" content="2022-02-02T02:01:07Z"/>
+<meta name="ID" content="maxnum"/>
+<meta name="User" content="udav-utiq-ejib-gipe"/>
+<meta name="Problem" content="ext/1801270115e7z5z5wxbxeqdep0nhqg29hic"/>
+<meta name="Elapsed" content="7956 ms"/>
+<style type="text/css">
+.header {font-weight: bold; font-size: 1.2em; }
+.item {font-weight: bold;}
+.pass {color: green;}
+.fail {color: red;}
+.note {color: blue; font-weight: bold;}
+table.file td {padding-right: 1em; background: #FFF; }
+.linenumber {color: gray;}
+.footnote {font-size: 0.7em;}
+table {font-size: 0.9em;}
+td, th { background: #EEE; margin: 0.5em; padding: 0.25em;}
+table.output td {vertical-align: top;}
+div.footnotes { border-top: 1px solid gray; padding-top: 0.5em; }
+</style>
+<title>Report</title>
+</head>
+<body>
+<p class="header run">Testing maxnum.hs</p>
+<div class="run">
+<pre class="output">3
+4
+12349
+-1
+12349
+prog: empty list
+CallStack (from HasCallStack):
+  error, called at maxnum.hs:3:13 in main:Main
+</pre>
+<span class="pass">pass </span></div>
+<p class="header studentFiles">Submitted files</p>
+<div class="studentFiles">
+<p class="caption">maxnum.hs:</p>
+<pre class="output">maxNum :: [Integer] -&gt; Integer
+maxNum [x] = x
+maxNum [] = error "empty list"
+maxNum (x:xs) 
+               | (maxNum xs) &gt; x = maxNum xs
+               | otherwise        = x
+
+main :: IO ()
+main = do
+  print (maxNum [1,2,3])
+  print (maxNum [4])
+  print $ maxNum [7, 12, 0, 99, 46, 12349, 82] -- note the use of the '$' here
+  print $ maxNum [-4, -1, -99, -2]
+  print $ maxNum [7, -9, 12, 0, 99, -3, 46, 12349, 82, -7, 8]
+  print $ maxNum []
+</pre>
+</div>
+<p class="header score">Score</p>
+<div class="score">
+<p class="score">1/1</p>
+</div>
+<div class="footnotes"><div class="footnote">2022-02-02T02:01:07Z</div>
+</div>
+</body></html>
